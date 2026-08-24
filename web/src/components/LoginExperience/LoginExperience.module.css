@@ -22,7 +22,7 @@
 .mascotSide {
   position: absolute;
   top: 8px;
-  left: calc(50% - 408px);
+  left: calc(50% - 435px);
   width: 460px;
   z-index: 0;
   pointer-events: none;

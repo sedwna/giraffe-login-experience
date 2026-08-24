@@ -155,10 +155,12 @@
 /* Demo-only composition switch (Top / Side) */
 .variant-switch {
   position: fixed;
+
+  /* Top-right corner: centered placement collided with the Top
+     composition's head rising above the card. */
   top: 14px;
-  left: 50%;
+  right: 14px;
   z-index: 20;
-  transform: translateX(-50%);
 
   display: inline-flex;
   align-items: center;
