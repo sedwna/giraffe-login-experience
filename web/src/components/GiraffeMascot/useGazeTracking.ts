@@ -80,10 +80,13 @@ export function useGazeTracking({
         1,
       );
 
+      // The eye line sits near the top of the viewport, so almost the
+      // whole screen is below it. Upward gaze gets a much shorter runway
+      // than downward, or the eyes would never visibly look up.
+      const dy = latestPointer.current.y - centerY;
+
       const vertical = clamp(
-        (
-          latestPointer.current.y - centerY
-        ) / (window.innerHeight * 0.3),
+        dy / (window.innerHeight * (dy < 0 ? 0.08 : 0.3)),
         -1,
         1,
       );
