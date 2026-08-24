@@ -48,11 +48,16 @@ Designed as a reusable developer-friendly implementation for modern applications
 
 ## The Experience
 
-A full-height cartoon giraffe stands **behind** the frosted-glass login card — its body softly blurred behind the glass, its neck and head rising above it.
+The demo ships **two compositions**, switchable live from the pill at the top of the page:
+
+- **Top** — the giraffe stands behind the frosted-glass card, its neck and head rising above it.
+- **Side** — the full-height body hides behind the card while the neck sweeps out past the card's left edge in a snake-like curve, head hanging outside beside the form.
+
+In both, the body reads through the backdrop blur as a soft silhouette.
 
 - **Eyes that follow you** — the giraffe tracks your pointer around the screen, and while you type its eyes follow the caret across the field.
-- **Privacy, please** — while a hidden password is being typed, the giraffe ducks down behind the glass, visible only as a blurred silhouette.
-- **Periscope mode** — toggle password visibility on and it rises halfway back up, periscope-style, one eye open, peeking over the card edge.
+- **Privacy, please** — while a hidden password is being typed, the giraffe hides behind the glass (ducking down in Top, retracting its neck sideways in Side), visible only as a blurred silhouette.
+- **Peeking** — toggle password visibility on and it sneaks halfway back out with one eye open: over the card's top edge in Top, past its side edge in Side.
 - **The long walk** — above the Sign-in button, a small walking giraffe waits at the start of a path. Press **Sign in** and it walks to the door:
   - **Correct credentials** — the door opens and the giraffe ducks through.
   - **Wrong credentials** — it bumps the locked door twice, recoils, shakes its head, and strides back to its waiting spot.
@@ -89,7 +94,9 @@ graph TD
 
 A[LoginExperience<br/>state machine: idle / checking / success / failure]
 
-A --> B[GiraffeMascot<br/>full-height SVG mascot]
+A --> B[GiraffeMascot<br/>Top composition]
+A --> B2[GiraffeMascotSide<br/>Side composition: snake-curve neck]
+B2 --> E
 A --> C[LoginForm]
 C --> D[EntryScene<br/>walking giraffe + door]
 
@@ -98,7 +105,7 @@ B --> E[useGazeTracking<br/>pointer & caret following]
 A --> F[features/auth<br/>validation + demo auth service]
 ```
 
-- `GiraffeMascot` — the full-body SVG character with pose states (`idle`, `shy`, `peek`) driven by a `data-pose` attribute and CSS transforms.
+- `GiraffeMascot` / `GiraffeMascotSide` — the two compositions of the full-body SVG character, kept as separate components with a shared gaze hook. Pose states (`idle`, `shy`, `peek`) are driven by a `data-pose` attribute and CSS transforms; the demo switch in `App.tsx` picks the composition.
 - `EntryScene` — the doorway strip above the Sign-in button; walk, bump, and enter choreographies are keyframe animations synced to the submit state machine (success 2.4s, failure 3.8s).
 - `features/auth` — credential validation and a demo authentication service with an `INVALID_CREDENTIALS` path for the reserved demo username.
 

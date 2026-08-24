@@ -13,6 +13,27 @@
   margin: 0 auto;
 }
 
+/* Side composition: the body stands behind the card at 1:1 art scale,
+   the snake-curve neck exits the card's left edge. */
+.experienceSide {
+  padding-top: 24px;
+}
+
+.mascotSide {
+  position: absolute;
+  top: 8px;
+  left: calc(50% - 408px);
+  width: 460px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 720px) {
+  .mascotSide {
+    display: none;
+  }
+}
+
 .mascot {
   position: absolute;
   top: 0;

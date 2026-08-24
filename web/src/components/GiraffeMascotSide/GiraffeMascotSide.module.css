@@ -1,0 +1,169 @@
+.mascot {
+  --gaze-x: 0;
+  --gaze-y: 0;
+
+  position: relative;
+  width: 100%;
+  user-select: none;
+  pointer-events: none;
+  transition: transform 750ms cubic-bezier(0.5, 0.05, 0.3, 1.12);
+  will-change: transform;
+}
+
+/* The giraffe stands at the SIDE of the card, leaning its neck out past
+   the card's edge. Password hidden: it pulls the neck in behind the
+   frosted glass — only a blurred silhouette remains. */
+.mascot[data-pose='shy'] {
+  transform: translate(19%, 2%);
+}
+
+/* Password shown: half the face slides back out — the card edge bisects
+   it, the outside eye opens toward the form, the glassed half stays a
+   soft blur. */
+.mascot[data-pose='peek'] {
+  transform: translate(9%, 1%);
+}
+
+.figure {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  animation: breathe 3.6s ease-in-out infinite;
+}
+
+/* Gentle tail sway keeps the body alive behind the glass. */
+.tail {
+  transform-box: fill-box;
+  transform-origin: 8% 4%;
+  animation: tailSway 4.6s ease-in-out infinite;
+}
+
+.head {
+  transform-box: fill-box;
+  transform-origin: 50% 96%;
+  transform: rotate(calc(var(--gaze-x) * 3.5deg));
+  transition: transform 450ms cubic-bezier(0.34, 1.35, 0.64, 1);
+  will-change: transform;
+}
+
+.pupil {
+  transform: translate(
+    calc(var(--gaze-x) * 5.4px),
+    calc(var(--gaze-y) * 4.4px)
+  );
+  transition: transform 90ms ease-out;
+  will-change: transform;
+}
+
+/* Eyelids scale down from the top of the eyeball. At rest a sliver
+   stays visible so the eyes read as relaxed, not startled. */
+.lid {
+  transform-box: fill-box;
+  transform-origin: 50% 4%;
+  transform: scaleY(0.35);
+  opacity: 0;
+  transition:
+    transform 240ms ease,
+    opacity 140ms ease;
+
+  /* The delay lets the transition ease pose changes before the periodic
+     blink resumes; opacity keeps the open lid truly invisible instead of
+     rasterizing as a flickering sub-pixel sliver. */
+  animation: blink 5.8s ease-in-out 1.2s infinite;
+}
+
+/* Shy: password is being typed and hidden. No paws to cover the
+   eyes with, so the giraffe turns its head away and shuts both. */
+.mascot[data-pose='shy'] .head {
+  transform: rotate(6deg) translate(2px, 3px);
+}
+
+.mascot[data-pose='shy'] .lid {
+  animation: none;
+  transform: scaleY(1.04);
+  opacity: 1;
+}
+
+.mascot[data-pose='shy'] .pupil {
+  transform: translate(0, 2px);
+}
+
+/* Peek: password toggled visible. The head sneaks halfway back
+   and one eye opens toward the form. */
+.mascot[data-pose='peek'] .head {
+  transform: rotate(3deg) translate(1px, 1px);
+}
+
+.mascot[data-pose='peek'] .lidLeft {
+  animation: none;
+  transform: scaleY(0.35);
+  opacity: 0;
+}
+
+.mascot[data-pose='peek'] .lidRight {
+  animation: none;
+  transform: scaleY(1.04);
+  opacity: 1;
+}
+
+.mascot[data-pose='peek'] .pupil {
+  transform: translate(3.5px, 4.6px);
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+@keyframes tailSway {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(7deg);
+  }
+}
+
+@keyframes blink {
+  0%,
+  91%,
+  100% {
+    transform: scaleY(0.35);
+    opacity: 0;
+  }
+
+  93%,
+  96% {
+    transform: scaleY(1.04);
+    opacity: 1;
+  }
+
+  98% {
+    transform: scaleY(0.35);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .figure,
+  .tail,
+  .lid {
+    animation: none;
+  }
+
+  .mascot,
+  .head,
+  .pupil,
+  .lid {
+    transition-duration: 1ms;
+  }
+}

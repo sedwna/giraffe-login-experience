@@ -151,3 +151,69 @@
     animation: none;
   }
 }
+
+/* Demo-only composition switch (Top / Side) */
+.variant-switch {
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  z-index: 20;
+  transform: translateX(-50%);
+
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  padding: 4px 6px;
+
+  border: 1px solid rgba(210, 226, 255, 0.16);
+  border-radius: 999px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(36, 53, 80, 0.55),
+    rgba(12, 25, 44, 0.45)
+  );
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+}
+
+.variant-switch__label {
+  padding: 0 8px 0 6px;
+  color: rgba(190, 205, 229, 0.6);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.variant-switch button {
+  padding: 5px 14px;
+
+  border: 0;
+  border-radius: 999px;
+
+  background: transparent;
+  color: rgba(203, 216, 238, 0.72);
+
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 160ms ease,
+    color 160ms ease;
+}
+
+.variant-switch button:hover {
+  color: #f5f8ff;
+}
+
+.variant-switch button.is-active {
+  background: rgba(82, 132, 224, 0.9);
+  color: #ffffff;
+}

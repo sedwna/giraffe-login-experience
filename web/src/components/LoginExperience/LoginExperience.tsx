@@ -9,11 +9,17 @@ import type {
 } from '../../features/auth/auth.types';
 import { LoginForm } from '../LoginForm/LoginForm';
 import { GiraffeMascot } from '../GiraffeMascot/GiraffeMascot';
+import { GiraffeMascotSide } from '../GiraffeMascotSide/GiraffeMascotSide';
 
 import type { SubmitState } from './loginExperience.types';
 import styles from './LoginExperience.module.css';
 
+export type MascotVariant = 'top' | 'side';
+
 interface LoginExperienceProps {
+  /** Where the giraffe stands: rising above the card, or leaning its
+      snake-curve neck out past the card's left edge. */
+  mascotVariant?: MascotVariant;
   authenticate?: AuthenticateLogin;
   onSocialLogin?: (provider: AuthProvider) => void | Promise<void>;
   onCreateAccount?: () => void;
@@ -32,6 +38,7 @@ const NETWORK_ERROR_RESULT: AuthResult = {
 };
 
 export function LoginExperience({
+  mascotVariant = 'top',
   authenticate = authenticateLogin,
   onSocialLogin = () => {},
   onCreateAccount = () => {},
@@ -158,16 +165,32 @@ export function LoginExperience({
     }, SUCCESS_ANIMATION_DURATION);
   };
 
+  const mascotProps = {
+    usernameFocused,
+    usernameLength: username.length,
+    passwordLength: password.length,
+    passwordFocused,
+    passwordVisible,
+  };
+
   return (
-    <section className={styles.experience}>
-      <div className={styles.mascot}>
-        <GiraffeMascot
-          usernameFocused={usernameFocused}
-          usernameLength={username.length}
-          passwordLength={password.length}
-          passwordFocused={passwordFocused}
-          passwordVisible={passwordVisible}
-        />
+    <section
+      className={
+        mascotVariant === 'side'
+          ? `${styles.experience} ${styles.experienceSide}`
+          : styles.experience
+      }
+    >
+      <div
+        className={
+          mascotVariant === 'side' ? styles.mascotSide : styles.mascot
+        }
+      >
+        {mascotVariant === 'side' ? (
+          <GiraffeMascotSide {...mascotProps} />
+        ) : (
+          <GiraffeMascot {...mascotProps} />
+        )}
       </div>
 
       <div className={styles.card}>
