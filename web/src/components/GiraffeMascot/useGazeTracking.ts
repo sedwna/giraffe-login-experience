@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-interface UsePointerGazeOptions {
+interface UseGazeTrackingOptions {
   usernameFocused: boolean;
   usernameLength: number;
   passwordFocused: boolean;
@@ -18,12 +18,20 @@ const clamp = (
   max: number,
 ) => Math.min(Math.max(value, min), max);
 
-export function usePointerGaze({
+/**
+ * Publishes the gaze direction as two unitless ratios in the -1..1 range.
+ *
+ * The raccoon mascot resolved pupil offsets to pixels because its eyes were
+ * raster layers. The giraffe is drawn in SVG user units, so the ratios stay
+ * abstract here and the stylesheet decides how far a pupil, an eyelid or the
+ * whole head is allowed to travel.
+ */
+export function useGazeTracking({
   usernameFocused,
   usernameLength,
   passwordFocused,
   passwordLength,
-}: UsePointerGazeOptions) {
+}: UseGazeTrackingOptions) {
   const mascotRef = useRef<HTMLDivElement>(null);
 
   const latestPointer = useRef<PointerPosition>({
@@ -60,8 +68,9 @@ export function usePointerGaze({
       const centerX =
         bounds.left + bounds.width / 2;
 
+      // The eyes sit near the top of the artwork, not at its centre.
       const centerY =
-        bounds.top + bounds.height * 0.43;
+        bounds.top + bounds.height * 0.09;
 
       const horizontal = clamp(
         (
@@ -80,13 +89,13 @@ export function usePointerGaze({
       );
 
       mascot.style.setProperty(
-        '--pupil-x',
-        `${horizontal * bounds.width * 0.019}px`,
+        '--gaze-x',
+        `${horizontal.toFixed(3)}`,
       );
 
       mascot.style.setProperty(
-        '--pupil-y',
-        `${vertical * bounds.width * 0.014}px`,
+        '--gaze-y',
+        `${vertical.toFixed(3)}`,
       );
 
       animationFrameId = null;
@@ -168,9 +177,8 @@ export function usePointerGaze({
       return;
     }
 
-    const bounds =
-      mascot.getBoundingClientRect();
-
+    // While a field has focus the giraffe reads along with the caret instead
+    // of following the pointer.
     const textLength = passwordFocused
       ? passwordLength
       : usernameLength;
@@ -181,18 +189,12 @@ export function usePointerGaze({
       1,
     );
 
-    const horizontal =
-      -0.9 + progress * 1.8;
-
     mascot.style.setProperty(
-      '--pupil-x',
-      `${horizontal * bounds.width * 0.028}px`,
+      '--gaze-x',
+      `${(-0.9 + progress * 1.8).toFixed(3)}`,
     );
 
-    mascot.style.setProperty(
-      '--pupil-y',
-      `${bounds.width * 0.027}px`,
-    );
+    mascot.style.setProperty('--gaze-y', '0.85');
   }, [
     inputFocused,
     usernameFocused,

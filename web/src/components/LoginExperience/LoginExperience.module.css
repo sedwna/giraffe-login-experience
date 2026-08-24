@@ -1,10 +1,15 @@
 .experience {
   --card-width: min(100%, 355px);
-  --mascot-size: clamp(140px, 20vw, 180px);
+
+  /* Width of the giraffe artwork. The SVG is tall (200 x 470 units), so
+     its on-screen height is width * 2.35. The card top is tuned to cross
+     the figure right at the shoulders (~52% of its height) so the body
+     stands behind the glass while neck and head rise above it. */
+  --mascot-size: clamp(150px, 21vw, 172px);
 
   position: relative;
   width: var(--card-width);
-  padding-top: calc(var(--mascot-size) - 14px);
+  padding-top: calc(var(--mascot-size) * 1.19);
   margin: 0 auto;
 }
 
@@ -14,7 +19,10 @@
   left: 50%;
   width: var(--mascot-size);
   transform: translateX(-50%);
-  z-index: 2;
+
+  /* Behind the card: the body reads through the backdrop blur as a warm
+     silhouette, exactly like something standing behind frosted glass. */
+  z-index: 0;
   pointer-events: none;
 }
 
@@ -83,7 +91,7 @@
 
 @media (max-width: 520px) {
   .experience {
-    --mascot-size: 220px;
+    --mascot-size: 170px;
   }
 
   .card {

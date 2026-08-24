@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/raccoon-login-experience/',
+  base: '/giraffe-login-experience/',
 })

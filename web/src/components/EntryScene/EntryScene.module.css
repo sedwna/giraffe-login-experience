@@ -1,0 +1,914 @@
+.scene {
+  --walk: 0;
+
+  position: relative;
+  height: 62px;
+  margin: -2px 0 -4px;
+  color: #f7fbff;
+  pointer-events: none;
+}
+
+/* Ground line */
+.scene::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  right: 5px;
+  bottom: 2px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.07) 25%,
+    rgba(255, 255, 255, 0.11) 70%,
+    transparent
+  );
+}
+
+/* ---------------------------------- */
+/* Walking giraffe                     */
+/* ---------------------------------- */
+
+.walker {
+  position: absolute;
+  bottom: 2px;
+  left: calc(var(--walk) * (100% - 84px));
+  width: 52px;
+
+  /* Base pace covers the walk home after a failed attempt. */
+  transition: left 900ms cubic-bezier(0.45, 0.05, 0.4, 0.95);
+  will-change: left;
+}
+
+/* Walking to the door is part of the submit story: the pace is tuned so
+   arrival lines up with the door keyframes (success ~44%, failure ~38%). */
+.scene[data-result="success"] .walker {
+  transition: left 1050ms cubic-bezier(0.35, 0.1, 0.55, 0.95);
+}
+
+.scene[data-result="failure"] .walker {
+  transition: left 1350ms cubic-bezier(0.35, 0.1, 0.55, 0.95);
+}
+
+/* After a successful entry the giraffe stays inside. The wrapper must
+   hide INSTANTLY (opacity is deliberately not transitioned): when
+   data-result="success" is swapped for data-entered, the forwards-filled
+   successEnter animation is dropped and the inner group snaps back to
+   full opacity — any fade here would flash the giraffe in front of the
+   closed door. */
+.scene[data-entered="true"] .walker {
+  opacity: 0;
+  transition: left 1ms;
+}
+
+.walkerFigure {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* The transitions below smooth the teardown when a result animation is
+   removed (forwards-filled poses would otherwise snap back to neutral
+   in a single frame). While an animation runs it overrides them. */
+.walkerInner {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  transition: transform 320ms ease;
+}
+
+.headGroup {
+  transform-box: fill-box;
+  transform-origin: 28% 74%;
+  transition: transform 320ms ease;
+}
+
+.leg {
+  transform-box: fill-box;
+  transform-origin: 50% 0%;
+  transition: transform 260ms ease;
+}
+
+/* Waiting at the start of the path: a soft breathing bob. */
+.scene:not([data-result]) .walkerInner {
+  animation: walkerBreathe 3.2s ease-in-out infinite;
+}
+
+/* Walking home after a failed attempt: legs stride, body bounces. */
+.scene[data-walking="true"] .legFrontA,
+.scene[data-walking="true"] .legHindB {
+  animation: strideSwingA 300ms ease-in-out infinite alternate;
+}
+
+.scene[data-walking="true"] .legFrontB,
+.scene[data-walking="true"] .legHindA {
+  animation: strideSwingB 300ms ease-in-out infinite alternate;
+}
+
+.scene[data-walking="true"] .walkerInner {
+  animation: strideBob 300ms ease-in-out infinite alternate;
+}
+
+@keyframes walkerBreathe {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(0.9px);
+  }
+}
+
+@keyframes strideSwingA {
+  from {
+    transform: rotate(14deg);
+  }
+
+  to {
+    transform: rotate(-14deg);
+  }
+}
+
+@keyframes strideSwingB {
+  from {
+    transform: rotate(-14deg);
+  }
+
+  to {
+    transform: rotate(14deg);
+  }
+}
+
+@keyframes strideBob {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-1.4px);
+  }
+}
+
+/* ---------------------------------- */
+/* Door                                */
+/* ---------------------------------- */
+
+.doorFrame {
+  position: absolute;
+  right: 8px;
+  bottom: 2px;
+  width: 30px;
+  height: 48px;
+  box-sizing: border-box;
+  border: 2px solid rgba(246, 250, 255, 0.95);
+  border-bottom: 0;
+  border-radius: 2px 2px 0 0;
+  background: rgba(255, 255, 255, 0.06);
+  perspective: 150px;
+}
+
+.door {
+  position: absolute;
+  inset: 2px 2px 0;
+  background: linear-gradient(180deg, #173a62, #0f2847 56%, #0a1d34);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 0 0 1px rgba(12, 26, 46, 0.32);
+  transform-origin: right center;
+}
+
+.doorKnob {
+  position: absolute;
+  top: 50%;
+  left: 3.5px;
+  width: 3.5px;
+  height: 3.5px;
+  border-radius: 50%;
+  background: rgba(255, 235, 193, 0.9);
+  box-shadow: 0 0 4px rgba(255, 235, 193, 0.4);
+  transform: translateY(-50%);
+}
+
+.doorLight {
+  position: absolute;
+  right: 20px;
+  bottom: -2px;
+  width: 96px;
+  height: 52px;
+  background: linear-gradient(
+    105deg,
+    rgba(255, 232, 181, 0.03) 0%,
+    rgba(255, 235, 190, 0.1) 28%,
+    rgba(255, 240, 207, 0.28) 58%,
+    rgba(255, 246, 224, 0.58) 82%,
+    rgba(255, 250, 238, 0.82) 100%
+  );
+  clip-path: polygon(100% 7%, 100% 70%, 0 100%, 17% 69%);
+  transform-origin: right center;
+  transform: scaleX(0.04);
+  opacity: 0;
+  filter: blur(1.4px);
+}
+
+.doorGlow {
+  position: absolute;
+  right: 24px;
+  bottom: 2px;
+  width: 40px;
+  height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at 75% 50%,
+    rgba(255, 246, 222, 0.5),
+    rgba(255, 238, 197, 0.18) 46%,
+    rgba(255, 238, 197, 0) 76%
+  );
+  filter: blur(1.8px);
+  transform-origin: right center;
+  transform: scaleX(0.1);
+  opacity: 0;
+}
+
+/* ---------------------------------- */
+/* Success: walk over, the door opens  */
+/* and the giraffe ducks through       */
+/* ---------------------------------- */
+
+.scene[data-result="success"] .door {
+  animation: doorSequence 2.4s cubic-bezier(0.45, 0, 0.2, 1) forwards;
+}
+
+.scene[data-result="success"] .doorLight {
+  animation: doorLightSequence 2.4s cubic-bezier(0.45, 0, 0.2, 1) forwards;
+}
+
+.scene[data-result="success"] .doorGlow {
+  animation: doorGlowSequence 2.4s cubic-bezier(0.45, 0, 0.2, 1) forwards;
+}
+
+.scene[data-result="success"] .walkerInner {
+  animation: successEnter 2.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.scene[data-result="success"] .headGroup {
+  animation: successDuck 2.4s ease-in-out forwards;
+}
+
+.scene[data-result="success"] .legFrontA,
+.scene[data-result="success"] .legHindB {
+  animation: successStrideA 2.4s ease-in-out forwards;
+}
+
+.scene[data-result="success"] .legFrontB,
+.scene[data-result="success"] .legHindA {
+  animation: successStrideB 2.4s ease-in-out forwards;
+}
+
+@keyframes successEnter {
+  0%,
+  44% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  56% {
+    transform: translateX(18px);
+    opacity: 1;
+  }
+
+  62% {
+    transform: translateX(26px);
+    opacity: 0.7;
+  }
+
+  68% {
+    transform: translateX(32px);
+    opacity: 0.15;
+  }
+
+  72%,
+  100% {
+    transform: translateX(34px);
+    opacity: 0;
+  }
+}
+
+@keyframes successDuck {
+  0%,
+  46% {
+    transform: rotate(0deg);
+  }
+
+  56% {
+    transform: rotate(16deg);
+  }
+
+  64% {
+    transform: rotate(12deg);
+  }
+
+  72%,
+  100% {
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes successStrideA {
+  0% {
+    transform: rotate(13deg);
+  }
+
+  7% {
+    transform: rotate(-13deg);
+  }
+
+  14% {
+    transform: rotate(13deg);
+  }
+
+  21% {
+    transform: rotate(-13deg);
+  }
+
+  28% {
+    transform: rotate(13deg);
+  }
+
+  35% {
+    transform: rotate(-13deg);
+  }
+
+  41% {
+    transform: rotate(8deg);
+  }
+
+  44% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(10deg);
+  }
+
+  56% {
+    transform: rotate(-10deg);
+  }
+
+  62% {
+    transform: rotate(8deg);
+  }
+
+  68%,
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes successStrideB {
+  0% {
+    transform: rotate(-13deg);
+  }
+
+  7% {
+    transform: rotate(13deg);
+  }
+
+  14% {
+    transform: rotate(-13deg);
+  }
+
+  21% {
+    transform: rotate(13deg);
+  }
+
+  28% {
+    transform: rotate(-13deg);
+  }
+
+  35% {
+    transform: rotate(13deg);
+  }
+
+  41% {
+    transform: rotate(-8deg);
+  }
+
+  44% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(-10deg);
+  }
+
+  56% {
+    transform: rotate(10deg);
+  }
+
+  62% {
+    transform: rotate(-8deg);
+  }
+
+  68%,
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes doorSequence {
+  0%,
+  40% {
+    transform: rotateY(0deg);
+  }
+
+  57% {
+    transform: rotateY(74deg);
+  }
+
+  79% {
+    transform: rotateY(74deg);
+  }
+
+  94%,
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+
+@keyframes doorLightSequence {
+  0%,
+  43% {
+    opacity: 0;
+    transform: scaleX(0.04);
+  }
+
+  50% {
+    opacity: 0.18;
+    transform: scaleX(0.28);
+  }
+
+  58% {
+    opacity: 0.58;
+    transform: scaleX(0.72);
+  }
+
+  64%,
+  79% {
+    opacity: 0.86;
+    transform: scaleX(1);
+  }
+
+  87% {
+    opacity: 0.36;
+    transform: scaleX(0.48);
+  }
+
+  95%,
+  100% {
+    opacity: 0;
+    transform: scaleX(0.04);
+  }
+}
+
+@keyframes doorGlowSequence {
+  0%,
+  45% {
+    opacity: 0;
+    transform: scaleX(0.1);
+  }
+
+  56% {
+    opacity: 0.42;
+    transform: scaleX(0.65);
+  }
+
+  64%,
+  79% {
+    opacity: 0.72;
+    transform: scaleX(1);
+  }
+
+  89% {
+    opacity: 0.24;
+    transform: scaleX(0.42);
+  }
+
+  95%,
+  100% {
+    opacity: 0;
+    transform: scaleX(0.1);
+  }
+}
+
+/* ---------------------------------- */
+/* Failure: walk over, two bumps on a  */
+/* locked door, recoil, dizzy shake    */
+/* ---------------------------------- */
+
+.scene[data-result="failure"] .walkerInner {
+  animation: failLunge 3.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.scene[data-result="failure"] .headGroup {
+  animation: failHeadBump 3.8s ease-in-out forwards;
+}
+
+.scene[data-result="failure"] .legFrontA,
+.scene[data-result="failure"] .legHindB {
+  animation: failStrideA 3.8s ease-in-out forwards;
+}
+
+.scene[data-result="failure"] .legFrontB,
+.scene[data-result="failure"] .legHindA {
+  animation: failStrideB 3.8s ease-in-out forwards;
+}
+
+.scene[data-result="failure"] .doorFrame {
+  animation: lockedFrameReaction 3.8s ease-in-out forwards;
+}
+
+.scene[data-result="failure"] .door {
+  animation: lockedDoorReaction 3.8s ease-in-out forwards;
+}
+
+.scene[data-result="failure"] .doorKnob {
+  animation: lockedKnobReaction 3.8s ease-in-out forwards;
+}
+
+@keyframes failLunge {
+  0%,
+  38% {
+    transform: translateX(0);
+  }
+
+  41% {
+    transform: translateX(6px);
+  }
+
+  44% {
+    transform: translateX(2px);
+  }
+
+  47% {
+    transform: translateX(8px);
+  }
+
+  50% {
+    transform: translateX(7px);
+  }
+
+  54% {
+    transform: translateX(-10px);
+  }
+
+  58% {
+    transform: translateX(-13px);
+  }
+
+  62% {
+    transform: translateX(-10.5px);
+  }
+
+  66% {
+    transform: translateX(-11.5px);
+  }
+
+  72%,
+  100% {
+    transform: translateX(-11px);
+  }
+}
+
+@keyframes failHeadBump {
+  0%,
+  38% {
+    transform: rotate(0deg);
+  }
+
+  42% {
+    transform: rotate(15deg);
+  }
+
+  45% {
+    transform: rotate(10deg);
+  }
+
+  47% {
+    transform: rotate(12deg);
+  }
+
+  49% {
+    transform: rotate(19deg);
+  }
+
+  53% {
+    transform: rotate(8deg);
+  }
+
+  56% {
+    transform: rotate(-7deg);
+  }
+
+  60% {
+    transform: rotate(5deg);
+  }
+
+  64% {
+    transform: rotate(-6deg);
+  }
+
+  68% {
+    transform: rotate(4deg);
+  }
+
+  72% {
+    transform: rotate(-3deg);
+  }
+
+  76% {
+    transform: rotate(2deg);
+  }
+
+  82%,
+  100% {
+    transform: rotate(-4deg);
+  }
+}
+
+@keyframes failStrideA {
+  0% {
+    transform: rotate(13deg);
+  }
+
+  5% {
+    transform: rotate(-13deg);
+  }
+
+  10% {
+    transform: rotate(13deg);
+  }
+
+  15% {
+    transform: rotate(-13deg);
+  }
+
+  20% {
+    transform: rotate(13deg);
+  }
+
+  25% {
+    transform: rotate(-13deg);
+  }
+
+  30% {
+    transform: rotate(13deg);
+  }
+
+  35% {
+    transform: rotate(-8deg);
+  }
+
+  38% {
+    transform: rotate(14deg);
+  }
+
+  42% {
+    transform: rotate(6deg);
+  }
+
+  46% {
+    transform: rotate(10deg);
+  }
+
+  50% {
+    transform: rotate(12deg);
+  }
+
+  54% {
+    transform: rotate(-16deg);
+  }
+
+  60% {
+    transform: rotate(6deg);
+  }
+
+  66%,
+  100% {
+    transform: rotate(4deg);
+  }
+}
+
+@keyframes failStrideB {
+  0% {
+    transform: rotate(-13deg);
+  }
+
+  5% {
+    transform: rotate(13deg);
+  }
+
+  10% {
+    transform: rotate(-13deg);
+  }
+
+  15% {
+    transform: rotate(13deg);
+  }
+
+  20% {
+    transform: rotate(-13deg);
+  }
+
+  25% {
+    transform: rotate(13deg);
+  }
+
+  30% {
+    transform: rotate(-13deg);
+  }
+
+  35% {
+    transform: rotate(8deg);
+  }
+
+  38% {
+    transform: rotate(-10deg);
+  }
+
+  42% {
+    transform: rotate(-4deg);
+  }
+
+  46% {
+    transform: rotate(-8deg);
+  }
+
+  50% {
+    transform: rotate(-10deg);
+  }
+
+  54% {
+    transform: rotate(14deg);
+  }
+
+  60% {
+    transform: rotate(-6deg);
+  }
+
+  66%,
+  100% {
+    transform: rotate(-4deg);
+  }
+}
+
+@keyframes lockedFrameReaction {
+  0%,
+  40% {
+    transform: translateX(0);
+    border-color: rgba(246, 250, 255, 0.95);
+    box-shadow: none;
+  }
+
+  /* First bump */
+  42% {
+    transform: translateX(1px);
+  }
+
+  44% {
+    transform: translateX(-1px);
+  }
+
+  46% {
+    transform: translateX(0);
+  }
+
+  /* Stronger second bump + red warning */
+  49% {
+    transform: translateX(2px);
+    border-color: rgba(255, 124, 124, 0.95);
+    box-shadow: 0 0 7px rgba(255, 78, 78, 0.34);
+  }
+
+  51% {
+    transform: translateX(-2px);
+    border-color: rgba(255, 102, 102, 1);
+    box-shadow: 0 0 10px rgba(255, 66, 66, 0.44);
+  }
+
+  53% {
+    transform: translateX(1px);
+    border-color: rgba(255, 126, 126, 0.95);
+  }
+
+  56%,
+  100% {
+    transform: translateX(0);
+    border-color: rgba(246, 250, 255, 0.95);
+    box-shadow: none;
+  }
+}
+
+@keyframes lockedDoorReaction {
+  /* box-shadow is stated explicitly here so the red warning at 49%
+     flashes at the second bump instead of bleeding in from 0%. */
+  0%,
+  40% {
+    transform: rotateY(0deg);
+    background: linear-gradient(180deg, #173a62, #0f2847 56%, #0a1d34);
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+      0 0 0 1px rgba(12, 26, 46, 0.32);
+  }
+
+  /*
+   * The door gives only a few degrees.
+   * Enough to communicate effort,
+   * never enough to look unlocked.
+   */
+  42% {
+    transform: rotateY(4deg);
+  }
+
+  45% {
+    transform: rotateY(1deg);
+  }
+
+  49% {
+    transform: rotateY(5deg);
+    background: linear-gradient(180deg, #7b2936, #591f2c 56%, #361522);
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 184, 184, 0.18),
+      0 0 9px rgba(255, 66, 66, 0.36);
+  }
+
+  52% {
+    transform: rotateY(2deg);
+  }
+
+  56%,
+  100% {
+    transform: rotateY(0deg);
+    background: linear-gradient(180deg, #173a62, #0f2847 56%, #0a1d34);
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+      0 0 0 1px rgba(12, 26, 46, 0.32);
+  }
+}
+
+@keyframes lockedKnobReaction {
+  0%,
+  40% {
+    transform: translateY(-50%) translateX(0) scale(1);
+    background: rgba(255, 235, 193, 0.9);
+    box-shadow: 0 0 4px rgba(255, 235, 193, 0.4);
+  }
+
+  42% {
+    transform: translateY(-50%) translateX(-1px) scale(1.15);
+  }
+
+  45% {
+    transform: translateY(-50%) translateX(1px) scale(1.05);
+  }
+
+  49% {
+    transform: translateY(-50%) translateX(-1px) scale(1.2);
+    background: #ff8f8f;
+    box-shadow: 0 0 6px rgba(255, 82, 82, 0.7);
+  }
+
+  52% {
+    transform: translateY(-50%) translateX(1px) scale(1.12);
+  }
+
+  56%,
+  100% {
+    transform: translateY(-50%) translateX(0) scale(1);
+    background: rgba(255, 235, 193, 0.9);
+    box-shadow: 0 0 4px rgba(255, 235, 193, 0.4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* !important so higher-specificity rules (e.g. the per-result walk
+     transitions on .walker) cannot restore full-length motion. */
+  .walker,
+  .walkerInner,
+  .headGroup,
+  .leg {
+    transition-duration: 1ms !important;
+  }
+
+  .walkerInner,
+  .headGroup,
+  .leg,
+  .door,
+  .doorFrame,
+  .doorKnob,
+  .doorLight,
+  .doorGlow {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

@@ -51,3 +51,6 @@ mobile/ios/Flutter/flutter_export_environment.sh
 *.swp
 *.swo
 *~
+
+# Claude Code local tooling
+.claude/

@@ -2,7 +2,7 @@
 
 ## Reporting a Vulnerability
 
-If you discover a security-related issue,.
+If you discover a security-related issue, please do not open a public issue.
 
 Use GitHub's private vulnerability reporting when available.
 

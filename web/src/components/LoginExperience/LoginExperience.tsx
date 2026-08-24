@@ -8,7 +8,7 @@ import type {
   LoginFieldErrors,
 } from '../../features/auth/auth.types';
 import { LoginForm } from '../LoginForm/LoginForm';
-import { RaccoonMascot } from '../RaccoonMascot/RaccoonMascot';
+import { GiraffeMascot } from '../GiraffeMascot/GiraffeMascot';
 
 import type { SubmitState } from './loginExperience.types';
 import styles from './LoginExperience.module.css';
@@ -55,6 +55,10 @@ export function LoginExperience({
 
   const timersRef = useRef<number[]>([]);
 
+  // Set when a field changes after a submit: pending failure feedback
+  // about the previous attempt should no longer surface mid-edit.
+  const editedSinceSubmitRef = useRef(false);
+
   const clearScheduledTasks = () => {
     timersRef.current.forEach((timer) => {
       window.clearTimeout(timer);
@@ -83,11 +87,13 @@ export function LoginExperience({
   };
 
   const handleUsernameChange = (value: string) => {
+    editedSinceSubmitRef.current = true;
     resetFeedback();
     setUsername(value);
   };
 
   const handlePasswordChange = (value: string) => {
+    editedSinceSubmitRef.current = true;
     resetFeedback();
     setPassword(value);
   };
@@ -100,6 +106,10 @@ export function LoginExperience({
     setSubmitState('failure-animation');
 
     schedule(() => {
+      if (editedSinceSubmitRef.current) {
+        return;
+      }
+
       setFieldErrors(result.fieldErrors ?? {});
       setAuthMessage(result.message);
     }, FAILURE_FEEDBACK_DELAY);
@@ -119,6 +129,7 @@ export function LoginExperience({
 
     clearScheduledTasks();
 
+    editedSinceSubmitRef.current = false;
     setFieldErrors({});
     setAuthMessage('');
     setSubmitState('checking');
@@ -150,7 +161,7 @@ export function LoginExperience({
   return (
     <section className={styles.experience}>
       <div className={styles.mascot}>
-        <RaccoonMascot
+        <GiraffeMascot
           usernameFocused={usernameFocused}
           usernameLength={username.length}
           passwordLength={password.length}

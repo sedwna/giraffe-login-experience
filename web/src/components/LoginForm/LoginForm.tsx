@@ -6,6 +6,7 @@ import type {
   LoginFieldErrors,
 } from '../../features/auth/auth.types';
 import type { SubmitState } from '../LoginExperience/loginExperience.types';
+import { EntryScene } from '../EntryScene/EntryScene';
 
 import styles from './LoginForm.module.css';
 
@@ -248,6 +249,16 @@ export function LoginForm({
           </p>
         )}
 
+      <EntryScene
+        result={
+          isAnimating
+            ? animationResult
+            : submitState === 'success'
+              ? 'entered'
+              : 'idle'
+        }
+      />
+
       <button
         className={styles.submitButton}
         type="submit"
@@ -255,53 +266,16 @@ export function LoginForm({
         disabled={isBusy}
         aria-live="polite"
       >
-        {isAnimating ? (
-          <span
-            className={styles.entryScene}
-            data-result={animationResult}
-            aria-hidden="true"
-          >
-            <span className={styles.walker}>
-              <span className={styles.personHead} />
-
-              <span className={styles.personBody}>
-                <span
-                  className={`${styles.personArm} ${styles.armLeft}`}
-                />
-                <span
-                  className={`${styles.personArm} ${styles.armRight}`}
-                />
-                <span
-                  className={`${styles.personLeg} ${styles.legLeft}`}
-                />
-                <span
-                  className={`${styles.personLeg} ${styles.legRight}`}
-                />
-              </span>
-            </span>
-
-            {animationResult === 'success' && (
-              <>
-                <span className={styles.doorLight} />
-                <span className={styles.doorGlow} />
-              </>
-            )}
-
-            <span className={styles.doorFrame}>
-              <span className={styles.door}>
-                <span className={styles.doorKnob} />
-              </span>
-            </span>
-          </span>
-        ) : (
-          <span className={styles.buttonLabel}>
-            {submitState === 'checking'
-              ? 'Checking...'
-              : submitState === 'success'
-                ? 'Welcome back!'
+        <span className={styles.buttonLabel}>
+          {submitState === 'checking'
+            ? 'Checking...'
+            : submitState === 'success-animation' ||
+                submitState === 'success'
+              ? 'Welcome back!'
+              : submitState === 'failure-animation'
+                ? '. . .'
                 : 'Sign in'}
-          </span>
-        )}
+        </span>
       </button>
 
       {showSignInStatus && (
