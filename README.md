@@ -6,14 +6,14 @@ Giraffe Login Experience
 </h1>
 
 <p>
-Interactive Cross-Platform Login Experience
+Interactive Login Experience
 </p>
 
 </div>
 
 <h1></h1>
 
-A modern authentication experience built with **React + TypeScript** and **Flutter** — a fork of [Raccoon Login Experience](https://github.com/parsashafizade/raccoon-login-experience) by Parsa Shafizade.
+A modern authentication experience built with **React + TypeScript** — a fork of [Raccoon Login Experience](https://github.com/parsashafizade/raccoon-login-experience) by Parsa Shafizade.
 
 This project demonstrates how a traditional login screen can become a more engaging product experience through micro-interactions, animations, and a reactive mascot — in this case, a very tall one.
 
@@ -28,7 +28,7 @@ Designed as a reusable developer-friendly implementation for modern applications
 
 <br><br>
 
-<img src="https://skillicons.dev/icons?i=react,ts,vite,flutter,dart" alt="Technology Stack" />
+<img src="https://skillicons.dev/icons?i=react,ts,vite" alt="Technology Stack" />
 
 <br><br>
 
@@ -53,9 +53,9 @@ A full-height cartoon giraffe stands **behind** the frosted-glass login card —
 - **Eyes that follow you** — the giraffe tracks your pointer around the screen, and while you type its eyes follow the caret across the field.
 - **Privacy, please** — while a hidden password is being typed, the giraffe ducks down behind the glass, visible only as a blurred silhouette.
 - **Periscope mode** — toggle password visibility on and it rises halfway back up, periscope-style, one eye open, peeking over the card edge.
-- **The long walk** — above the Sign-in button, a small walking giraffe advances toward a door as the form is completed:
+- **The long walk** — above the Sign-in button, a small walking giraffe waits at the start of a path. Press **Sign in** and it walks to the door:
   - **Correct credentials** — the door opens and the giraffe ducks through.
-  - **Wrong credentials** — it bumps the locked door, recoils, and shakes its head.
+  - **Wrong credentials** — it bumps the locked door twice, recoils, shakes its head, and strides back to its waiting spot.
 
 ### Demo Account
 
@@ -80,43 +80,36 @@ Try the interactive login experience:
 ---
 ## Architecture
 
-The project contains two independent implementations sharing the same product concept.
-
-> **Note:** the giraffe experience currently ships in the **web (React) app only**. The Flutter app still runs the original raccoon experience — porting the giraffe to Flutter is a future step.
+The web app is a small, layered React application. The mascot and the door
+scene are pure SVG + CSS animation — no animation libraries, no raster
+assets.
 
 ```mermaid
 graph TD
 
-A[Giraffe Login Experience]
+A[LoginExperience<br/>state machine: idle / checking / success / failure]
 
-A --> B[Web Application<br/>Giraffe Experience]
-A --> C[Mobile Application<br/>Original Raccoon Experience]
+A --> B[GiraffeMascot<br/>full-height SVG mascot]
+A --> C[LoginForm]
+C --> D[EntryScene<br/>walking giraffe + door]
 
-B --> D[React + TypeScript]
-D --> E[UI Components]
-D --> F[Authentication Layer]
+B --> E[useGazeTracking<br/>pointer & caret following]
 
-C --> G[Flutter]
-G --> H[Presentation Layer]
-G --> I[Domain/Data Layer]
+A --> F[features/auth<br/>validation + demo auth service]
 ```
+
+- `GiraffeMascot` — the full-body SVG character with pose states (`idle`, `shy`, `peek`) driven by a `data-pose` attribute and CSS transforms.
+- `EntryScene` — the doorway strip above the Sign-in button; walk, bump, and enter choreographies are keyframe animations synced to the submit state machine (success 2.4s, failure 3.8s).
+- `features/auth` — credential validation and a demo authentication service with an `INVALID_CREDENTIALS` path for the reserved demo username.
 
 ---
 
 ## Tech Stack
 
-### Web
-
-- React
+- React 19
 - TypeScript
 - Vite
-- CSS Modules
-
-### Mobile
-
-- Flutter
-- Dart
-- Feature-based architecture
+- CSS Modules (no UI/animation libraries)
 
 ---
 
@@ -140,8 +133,6 @@ A cartoon giraffe with a soft, Pixar-ish 3D feel, drawn as vector art:
 
 ## Getting Started
 
-### Web
-
 ```bash
 cd web
 
@@ -150,17 +141,9 @@ npm install
 npm run dev
 ```
 
----
+The production build (`npm run build`) is deployed to GitHub Pages by the
+`Deploy Web Demo` workflow on every push to `main` that touches `web/`.
 
-### Mobile
-
-```bash
-cd mobile
-
-flutter pub get
-
-flutter run
-```
 ---
 
 ## Contributing
@@ -176,11 +159,9 @@ You can contribute by:
 
 ## Future Improvements
 
-- Port the giraffe experience to the Flutter app
 - Real authentication backend integration
 - Additional mascot interaction states
 - More themes and customization options
-- Production-ready authentication services
 
 ---
 
@@ -194,7 +175,7 @@ You are free to use, modify, and distribute this project while keeping the origi
 
 ## Credits
 
-This project is a fork of **[Raccoon Login Experience](https://github.com/parsashafizade/raccoon-login-experience)** by **Parsa Shafizade** — the original concept, raccoon mascot, and both base implementations are his work.
+This project is a fork of **[Raccoon Login Experience](https://github.com/parsashafizade/raccoon-login-experience)** by **Parsa Shafizade** — the original concept, raccoon mascot, and base implementation are his work. The `mobile/` folder contains his original Flutter implementation, kept untouched from upstream; everything giraffe lives in `web/`.
 
 - Original repository: https://github.com/parsashafizade/raccoon-login-experience
 - Original live demo: https://parsashafizade.github.io/raccoon-login-experience/
