@@ -1,0 +1,572 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 420" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif">
+
+  <defs>
+    <linearGradient id="bn-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07101c"/>
+      <stop offset="0.48" stop-color="#0b1728"/>
+      <stop offset="1" stop-color="#07121f"/>
+    </linearGradient>
+    <radialGradient id="bn-glowA" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#4370ee" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#4370ee" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="bn-glowB" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#2ab5cc" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#2ab5cc" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1280" height="420" fill="url(#bn-bg)"/>
+  <ellipse cx="256" cy="67.2" rx="384" ry="210" fill="url(#bn-glowA)"/>
+  <ellipse cx="1075.2" cy="344.4" rx="358.40000000000003" ry="201.6" fill="url(#bn-glowB)"/>
+
+<defs>
+  <clipPath id="bn-cardClip"><rect x="850" y="212" width="330" height="208" rx="26"/></clipPath>
+  <filter id="bn-blur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="7"/></filter>
+  <linearGradient id="bn-card" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="rgba(36,53,80,0.52)"/>
+    <stop offset="1" stop-color="rgba(12,25,44,0.4)"/>
+  </linearGradient>
+</defs>
+
+<!-- giraffe standing behind the glass card -->
+<g transform="translate(945 18) scale(0.82)">
+  <g>
+  <defs>
+    <radialGradient id="bm-bodyGrad" cx="0.46" cy="0.6" r="0.72">
+      <stop offset="0" stop-color="#F9EBCC"/>
+      <stop offset="0.55" stop-color="#F1DDB6"/>
+      <stop offset="1" stop-color="#DEC094"/>
+    </radialGradient>
+    <linearGradient id="bm-neckGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#E2C79E"/>
+      <stop offset="0.4" stop-color="#F3E1BD"/>
+      <stop offset="1" stop-color="#DABA8E"/>
+    </linearGradient>
+    <radialGradient id="bm-headGrad" cx="0.45" cy="0.35" r="0.8">
+      <stop offset="0" stop-color="#F8E9C9"/>
+      <stop offset="0.7" stop-color="#EFD9B2"/>
+      <stop offset="1" stop-color="#DFC094"/>
+    </radialGradient>
+    <radialGradient id="bm-eyeGrad" cx="0.42" cy="0.34" r="0.85">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.55" stop-color="#FBF8F1"/>
+      <stop offset="0.85" stop-color="#EFE7D6"/>
+      <stop offset="1" stop-color="#D8CCB4"/>
+    </radialGradient>
+    <radialGradient id="bm-muzzleGrad" cx="0.4" cy="0.3" r="0.9">
+      <stop offset="0" stop-color="#B15E3A"/>
+      <stop offset="0.5" stop-color="#9C4A2C"/>
+      <stop offset="1" stop-color="#7C351E"/>
+    </radialGradient>
+    <linearGradient id="bm-patchGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C75A33"/>
+      <stop offset="1" stop-color="#A84325"/>
+    </linearGradient>
+    <radialGradient id="bm-bootGrad" cx="0.38" cy="0.28" r="1">
+      <stop offset="0" stop-color="#503A31"/>
+      <stop offset="0.5" stop-color="#362520"/>
+      <stop offset="1" stop-color="#1D120E"/>
+    </radialGradient>
+    <linearGradient id="bm-cuffGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FBF0DC"/>
+      <stop offset="1" stop-color="#E4CFA8"/>
+    </linearGradient>
+    <radialGradient id="bm-shadowGrad" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#04101F" stop-opacity="0.55"/>
+      <stop offset="0.7" stop-color="#04101F" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#04101F" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="bm-bodyClip">
+      <path d="M 100 232 C 133 232 156 256 162 298 C 166.5 330 140 356 100 356 C 60 356 33.5 330 38 298 C 44 256 67 232 100 232 Z"/>
+    </clipPath>
+    <clipPath id="bm-neckClip">
+      <path d="M 90 74 C 88 112 85 150 79 194 C 76 214 74.5 226 74 244 C 88 258 112 258 128 244 C 126.5 226 124 212 119 194 C 112.5 150 110 112 110 74 Z"/>
+    </clipPath>
+    <g id="bm-boot">
+      <rect x="-10.5" y="22.5" width="24" height="5.5" rx="2.6" fill="#140C08"/>
+      <path d="M -9.5 1 L -9.5 18.5 Q -9.5 25.5 -1.5 25.5 L 4.5 25.5 Q 12.5 25.5 12.5 19.5 Q 12.5 14.5 8.5 12.5 L 8.5 1 Z" fill="url(#bm-bootGrad)"/>
+      <ellipse cx="6.5" cy="19.5" rx="4.5" ry="3" fill="#6B5147" opacity="0.35"/>
+      <path d="M -6.5 3.5 L 6 6.5 M 6 3.5 L -6.5 6.5 M -6.5 8.5 L 6 11.5 M 6 8.5 L -6.5 11.5" stroke="#E9D8B6" stroke-width="1.4" stroke-linecap="round" fill="none" opacity="0.9"/>
+      <path d="M -11 -1.5 Q -11 -4.5 -8 -4.5 L 8 -4.5 Q 11 -4.5 11 -1.5 L 11 1.5 Q 8.5 4.8 5.6 2.6 Q 2.9 5.6 0 2.8 Q -2.9 5.6 -5.6 2.6 Q -8.5 4.8 -11 1.5 Z" fill="url(#bm-cuffGrad)"/>
+    </g>
+  </defs>
+
+  <ellipse cx="100" cy="449" rx="82" ry="6" fill="url(#bm-shadowGrad)"/>
+  <ellipse cx="59" cy="448" rx="16" ry="3.6" fill="url(#bm-shadowGrad)"/>
+  <ellipse cx="141" cy="448" rx="16" ry="3.6" fill="url(#bm-shadowGrad)"/>
+  <ellipse cx="84" cy="450" rx="16" ry="3.6" fill="url(#bm-shadowGrad)"/>
+  <ellipse cx="116" cy="450" rx="16" ry="3.6" fill="url(#bm-shadowGrad)"/>
+
+  <g class="tail">
+    <path d="M 138 282 C 158 302 166 334 159 372" stroke="#E7CDA2" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <path d="M 159 367 C 166 371 167 383 160 391 C 153 384 152 372 159 367 Z" fill="#46301C"/>
+  </g>
+
+  <path d="M 62 330 C 64 360 66 382 62 400 C 60 408 59 413 59 419" stroke="#B8946A" stroke-width="9.5" stroke-linecap="round" fill="none"/>
+  <path d="M 62 330 C 64 360 66 382 62 400 C 60 408 59 413 59 419" stroke="#DEC49A" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <path d="M 138 330 C 136 360 134 382 138 400 C 140 408 141 413 141 419" stroke="#B8946A" stroke-width="9.5" stroke-linecap="round" fill="none"/>
+  <path d="M 138 330 C 136 360 134 382 138 400 C 140 408 141 413 141 419" stroke="#DEC49A" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <use href="#bm-boot" transform="translate(59,419)"/>
+  <use href="#bm-boot" transform="translate(141,419) scale(-1,1)"/>
+
+  <path d="M 100 232 C 133 232 156 256 162 298 C 166.5 330 140 356 100 356 C 60 356 33.5 330 38 298 C 44 256 67 232 100 232 Z" fill="url(#bm-bodyGrad)" stroke="#9C6740" stroke-opacity="0.3" stroke-width="1.5"/>
+  <g clip-path="url(#bm-bodyClip)">
+    <ellipse cx="97" cy="314" rx="36" ry="27" fill="#FAEDCB" opacity="0.5"/>
+    <path d="M 48 244 C 60 234 76 236 80 248 C 84 260 74 272 60 272 C 46 272 40 254 48 244 Z" fill="url(#bm-patchGrad)"/>
+    <path d="M 30 286 C 44 278 58 284 60 298 C 62 314 50 324 36 320 C 22 316 20 296 30 286 Z" fill="url(#bm-patchGrad)" opacity="0.96"/>
+    <path d="M 46 330 C 58 322 72 328 74 342 C 76 356 62 364 50 358 C 38 352 36 338 46 330 Z" fill="url(#bm-patchGrad)"/>
+    <path d="M 126 332 C 138 324 152 330 154 344 C 156 358 142 366 130 360 C 118 354 116 340 126 332 Z" fill="url(#bm-patchGrad)" opacity="0.96"/>
+    <path d="M 140 280 C 154 274 168 282 168 298 C 168 314 156 322 142 316 C 128 310 128 288 140 280 Z" fill="url(#bm-patchGrad)"/>
+    <path d="M 122 240 C 136 234 150 240 150 254 C 150 266 138 272 126 268 C 114 264 112 248 122 240 Z" fill="url(#bm-patchGrad)" opacity="0.97"/>
+    <path d="M 92 234 C 100 230 110 232 112 242 C 113 252 104 258 96 256 C 88 253 86 240 92 234 Z" fill="url(#bm-patchGrad)" opacity="0.95"/>
+    <ellipse cx="150" cy="300" rx="26" ry="55" fill="#B07840" opacity="0.18"/>
+    <ellipse cx="48" cy="300" rx="22" ry="50" fill="#B07840" opacity="0.14"/>
+    <ellipse cx="100" cy="244" rx="30" ry="10" fill="#C79A69" opacity="0.22"/>
+  </g>
+
+  <path d="M 90 74 C 88 112 85 150 79 194 C 76 214 74.5 226 74 244 C 88 258 112 258 128 244 C 126.5 226 124 212 119 194 C 112.5 150 110 112 110 74 Z" fill="url(#bm-neckGrad)" stroke="#9C6740" stroke-opacity="0.3" stroke-width="1.4"/>
+  <g clip-path="url(#bm-neckClip)">
+    <path d="M 84 90 C 92 84 104 84 108 92 C 111 100 106 108 98 110 C 88 112 80 104 84 90 Z" fill="url(#bm-patchGrad)"/>
+    <path d="M 100 116 C 110 112 118 118 116 128 C 114 138 104 142 97 138 C 90 133 92 121 100 116 Z" fill="url(#bm-patchGrad)" opacity="0.96"/>
+    <path d="M 78 128 C 86 122 94 126 95 136 C 96 146 89 152 81 150 C 73 147 72 135 78 128 Z" fill="url(#bm-patchGrad)"/>
+    <path d="M 98 152 C 108 148 117 154 116 165 C 115 175 106 180 98 177 C 90 173 90 158 98 152 Z" fill="url(#bm-patchGrad)" opacity="0.97"/>
+    <path d="M 74 166 C 82 160 90 164 91 174 C 92 184 85 190 77 188 C 69 185 68 173 74 166 Z" fill="url(#bm-patchGrad)"/>
+    <path d="M 96 192 C 106 188 116 194 116 205 C 116 216 106 222 97 218 C 88 214 88 198 96 192 Z" fill="url(#bm-patchGrad)" opacity="0.96"/>
+    <path d="M 70 202 C 78 196 87 200 88 211 C 89 222 81 228 72 226 C 63 222 62 209 70 202 Z" fill="url(#bm-patchGrad)"/>
+    <path d="M 92 228 C 102 224 112 228 113 240 C 113 248 104 252 96 250 C 87 247 86 231 92 228 Z" fill="url(#bm-patchGrad)" opacity="0.95"/>
+    <ellipse cx="121" cy="165" rx="13" ry="75" fill="#B07840" opacity="0.15"/>
+    <ellipse cx="80" cy="165" rx="10" ry="70" fill="#B07840" opacity="0.1"/>
+  </g>
+
+  <path d="M 86 338 C 87 366 90 388 86 404 C 84.5 411 84 415 84 421" stroke="#C9A470" stroke-width="9.5" stroke-linecap="round" fill="none"/>
+  <path d="M 86 338 C 87 366 90 388 86 404 C 84.5 411 84 415 84 421" stroke="#F2DFBB" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <path d="M 114 338 C 113 366 110 388 114 404 C 115.5 411 116 415 116 421" stroke="#C9A470" stroke-width="9.5" stroke-linecap="round" fill="none"/>
+  <path d="M 114 338 C 113 366 110 388 114 404 C 115.5 411 116 415 116 421" stroke="#F2DFBB" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <ellipse cx="87" cy="366" rx="3" ry="5" fill="url(#bm-patchGrad)" transform="rotate(6 87 366)"/>
+  <ellipse cx="113" cy="372" rx="3" ry="4.6" fill="url(#bm-patchGrad)" transform="rotate(-6 113 372)"/>
+  <use href="#bm-boot" transform="translate(84,421)"/>
+  <use href="#bm-boot" transform="translate(116,421) scale(-1,1)"/>
+
+  <g class="head">
+    <path d="M 95 21 C 90 12 85 3 79.5 -4" stroke="#4A331E" stroke-width="4.6" stroke-linecap="round" fill="none"/>
+    <path d="M 105 21 C 110 12 115 3 120.5 -4" stroke="#4A331E" stroke-width="4.6" stroke-linecap="round" fill="none"/>
+    <circle cx="78.5" cy="-5.2" r="4.7" fill="#3E2917"/>
+    <circle cx="77.1" cy="-6.6" r="1.4" fill="#6E4E31" opacity="0.9"/>
+    <circle cx="121.5" cy="-5.2" r="4.7" fill="#3E2917"/>
+    <circle cx="120.1" cy="-6.6" r="1.4" fill="#6E4E31" opacity="0.9"/>
+    <path d="M 81 33 C 73 26 61 24.5 56.5 29 C 53.5 32 57 38 64 40.5 C 71 43 78 41 81 37.5 Z" fill="#EFD9B2" stroke="#9C6740" stroke-opacity="0.3" stroke-width="1"/>
+    <path d="M 77 33.5 C 71 29 63 28 60 31 C 58.5 33 61 36.5 66 38 C 71 39.5 75.5 38 77 35.5 Z" fill="#BC5B36" opacity="0.88"/>
+    <path d="M 119 33 C 127 26 139 24.5 143.5 29 C 146.5 32 143 38 136 40.5 C 129 43 122 41 119 37.5 Z" fill="#EFD9B2" stroke="#9C6740" stroke-opacity="0.3" stroke-width="1"/>
+    <path d="M 123 33.5 C 129 29 137 28 140 31 C 141.5 33 139 36.5 134 38 C 129 39.5 124.5 38 123 35.5 Z" fill="#BC5B36" opacity="0.88"/>
+    <ellipse cx="100" cy="44" rx="21.5" ry="19.5" fill="url(#bm-headGrad)" stroke="#9C6740" stroke-opacity="0.25" stroke-width="1.2"/>
+    <path d="M 78 54 C 78 42 88 37 100 37 C 112 37 122 42 122 54 C 122 68 113 80 100 80 C 87 80 78 68 78 54 Z" fill="url(#bm-muzzleGrad)" stroke="#5E2312" stroke-opacity="0.35" stroke-width="1.2"/>
+    <ellipse cx="90" cy="47" rx="8" ry="4.5" fill="#D99062" opacity="0.35" transform="rotate(-18 90 47)"/>
+    <path d="M 90.5 47 C 88.5 49 88 52 89.5 54.5" stroke="#4F1F12" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+    <path d="M 109.5 47 C 111.5 49 112 52 110.5 54.5" stroke="#4F1F12" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+    <path d="M 95 71 Q 100 74.5 105 71" stroke="#6E2F1C" stroke-width="1.6" stroke-linecap="round" fill="none" opacity="0.6"/>
+    <g>
+      <circle cx="82" cy="19" r="16.5" fill="url(#bm-eyeGrad)"/>
+      <path d="M 68.5 28.5 A 16.5 16.5 0 0 0 95.5 28.5" stroke="#C6B99F" stroke-width="1.6" stroke-linecap="round" fill="none" opacity="0.55"/>
+      <g class="pupil">
+        <circle cx="84" cy="22.5" r="4.8" fill="#3A2317"/>
+        <circle cx="86" cy="20.5" r="1.7" fill="#FFFFFF" opacity="0.95"/><circle cx="81" cy="24.5" r="0.9" fill="#FFFFFF" opacity="0.45"/>
+      </g>
+      <ellipse class="lid lidLeft" transform="translate(0 1.032) scale(1 0.14)" cx="82" cy="19" rx="17.8" ry="17.8" fill="#F0DCB8"/>
+    </g>
+    <g>
+      <circle cx="118" cy="19" r="16.5" fill="url(#bm-eyeGrad)"/>
+      <path d="M 104.5 28.5 A 16.5 16.5 0 0 0 131.5 28.5" stroke="#C6B99F" stroke-width="1.6" stroke-linecap="round" fill="none" opacity="0.55"/>
+      <g class="pupil">
+        <circle cx="116" cy="22.5" r="4.8" fill="#3A2317"/>
+        <circle cx="118" cy="20.5" r="1.7" fill="#FFFFFF" opacity="0.95"/><circle cx="113" cy="24.5" r="0.9" fill="#FFFFFF" opacity="0.45"/>
+      </g>
+      <ellipse class="lid lidRight" transform="translate(0 1.032) scale(1 0.14)" cx="118" cy="19" rx="17.8" ry="17.8" fill="#F0DCB8"/>
+    </g>
+  </g>
+</g>
+</g>
+<!-- blurred copy inside the card region to fake backdrop blur -->
+<g clip-path="url(#bn-cardClip)">
+  <rect x="850" y="212" width="330" height="208" fill="#0b1728"/>
+  <g transform="translate(945 18) scale(0.82)" filter="url(#bn-blur)" opacity="0.9">
+    
+  <defs>
+    <radialGradient id="bmb-bodyGrad" cx="0.46" cy="0.6" r="0.72">
+      <stop offset="0" stop-color="#F9EBCC"/>
+      <stop offset="0.55" stop-color="#F1DDB6"/>
+      <stop offset="1" stop-color="#DEC094"/>
+    </radialGradient>
+    <linearGradient id="bmb-neckGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#E2C79E"/>
+      <stop offset="0.4" stop-color="#F3E1BD"/>
+      <stop offset="1" stop-color="#DABA8E"/>
+    </linearGradient>
+    <radialGradient id="bmb-headGrad" cx="0.45" cy="0.35" r="0.8">
+      <stop offset="0" stop-color="#F8E9C9"/>
+      <stop offset="0.7" stop-color="#EFD9B2"/>
+      <stop offset="1" stop-color="#DFC094"/>
+    </radialGradient>
+    <radialGradient id="bmb-eyeGrad" cx="0.42" cy="0.34" r="0.85">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.55" stop-color="#FBF8F1"/>
+      <stop offset="0.85" stop-color="#EFE7D6"/>
+      <stop offset="1" stop-color="#D8CCB4"/>
+    </radialGradient>
+    <radialGradient id="bmb-muzzleGrad" cx="0.4" cy="0.3" r="0.9">
+      <stop offset="0" stop-color="#B15E3A"/>
+      <stop offset="0.5" stop-color="#9C4A2C"/>
+      <stop offset="1" stop-color="#7C351E"/>
+    </radialGradient>
+    <linearGradient id="bmb-patchGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C75A33"/>
+      <stop offset="1" stop-color="#A84325"/>
+    </linearGradient>
+    <radialGradient id="bmb-bootGrad" cx="0.38" cy="0.28" r="1">
+      <stop offset="0" stop-color="#503A31"/>
+      <stop offset="0.5" stop-color="#362520"/>
+      <stop offset="1" stop-color="#1D120E"/>
+    </radialGradient>
+    <linearGradient id="bmb-cuffGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FBF0DC"/>
+      <stop offset="1" stop-color="#E4CFA8"/>
+    </linearGradient>
+    <radialGradient id="bmb-shadowGrad" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#04101F" stop-opacity="0.55"/>
+      <stop offset="0.7" stop-color="#04101F" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#04101F" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="bmb-bodyClip">
+      <path d="M 100 232 C 133 232 156 256 162 298 C 166.5 330 140 356 100 356 C 60 356 33.5 330 38 298 C 44 256 67 232 100 232 Z"/>
+    </clipPath>
+    <clipPath id="bmb-neckClip">
+      <path d="M 90 74 C 88 112 85 150 79 194 C 76 214 74.5 226 74 244 C 88 258 112 258 128 244 C 126.5 226 124 212 119 194 C 112.5 150 110 112 110 74 Z"/>
+    </clipPath>
+    <g id="bmb-boot">
+      <rect x="-10.5" y="22.5" width="24" height="5.5" rx="2.6" fill="#140C08"/>
+      <path d="M -9.5 1 L -9.5 18.5 Q -9.5 25.5 -1.5 25.5 L 4.5 25.5 Q 12.5 25.5 12.5 19.5 Q 12.5 14.5 8.5 12.5 L 8.5 1 Z" fill="url(#bmb-bootGrad)"/>
+      <ellipse cx="6.5" cy="19.5" rx="4.5" ry="3" fill="#6B5147" opacity="0.35"/>
+      <path d="M -6.5 3.5 L 6 6.5 M 6 3.5 L -6.5 6.5 M -6.5 8.5 L 6 11.5 M 6 8.5 L -6.5 11.5" stroke="#E9D8B6" stroke-width="1.4" stroke-linecap="round" fill="none" opacity="0.9"/>
+      <path d="M -11 -1.5 Q -11 -4.5 -8 -4.5 L 8 -4.5 Q 11 -4.5 11 -1.5 L 11 1.5 Q 8.5 4.8 5.6 2.6 Q 2.9 5.6 0 2.8 Q -2.9 5.6 -5.6 2.6 Q -8.5 4.8 -11 1.5 Z" fill="url(#bmb-cuffGrad)"/>
+    </g>
+  </defs>
+
+  <ellipse cx="100" cy="449" rx="82" ry="6" fill="url(#bmb-shadowGrad)"/>
+  <ellipse cx="59" cy="448" rx="16" ry="3.6" fill="url(#bmb-shadowGrad)"/>
+  <ellipse cx="141" cy="448" rx="16" ry="3.6" fill="url(#bmb-shadowGrad)"/>
+  <ellipse cx="84" cy="450" rx="16" ry="3.6" fill="url(#bmb-shadowGrad)"/>
+  <ellipse cx="116" cy="450" rx="16" ry="3.6" fill="url(#bmb-shadowGrad)"/>
+
+  <g class="tail">
+    <path d="M 138 282 C 158 302 166 334 159 372" stroke="#E7CDA2" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <path d="M 159 367 C 166 371 167 383 160 391 C 153 384 152 372 159 367 Z" fill="#46301C"/>
+  </g>
+
+  <path d="M 62 330 C 64 360 66 382 62 400 C 60 408 59 413 59 419" stroke="#B8946A" stroke-width="9.5" stroke-linecap="round" fill="none"/>
+  <path d="M 62 330 C 64 360 66 382 62 400 C 60 408 59 413 59 419" stroke="#DEC49A" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <path d="M 138 330 C 136 360 134 382 138 400 C 140 408 141 413 141 419" stroke="#B8946A" stroke-width="9.5" stroke-linecap="round" fill="none"/>
+  <path d="M 138 330 C 136 360 134 382 138 400 C 140 408 141 413 141 419" stroke="#DEC49A" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <use href="#bmb-boot" transform="translate(59,419)"/>
+  <use href="#bmb-boot" transform="translate(141,419) scale(-1,1)"/>
+
+  <path d="M 100 232 C 133 232 156 256 162 298 C 166.5 330 140 356 100 356 C 60 356 33.5 330 38 298 C 44 256 67 232 100 232 Z" fill="url(#bmb-bodyGrad)" stroke="#9C6740" stroke-opacity="0.3" stroke-width="1.5"/>
+  <g clip-path="url(#bmb-bodyClip)">
+    <ellipse cx="97" cy="314" rx="36" ry="27" fill="#FAEDCB" opacity="0.5"/>
+    <path d="M 48 244 C 60 234 76 236 80 248 C 84 260 74 272 60 272 C 46 272 40 254 48 244 Z" fill="url(#bmb-patchGrad)"/>
+    <path d="M 30 286 C 44 278 58 284 60 298 C 62 314 50 324 36 320 C 22 316 20 296 30 286 Z" fill="url(#bmb-patchGrad)" opacity="0.96"/>
+    <path d="M 46 330 C 58 322 72 328 74 342 C 76 356 62 364 50 358 C 38 352 36 338 46 330 Z" fill="url(#bmb-patchGrad)"/>
+    <path d="M 126 332 C 138 324 152 330 154 344 C 156 358 142 366 130 360 C 118 354 116 340 126 332 Z" fill="url(#bmb-patchGrad)" opacity="0.96"/>
+    <path d="M 140 280 C 154 274 168 282 168 298 C 168 314 156 322 142 316 C 128 310 128 288 140 280 Z" fill="url(#bmb-patchGrad)"/>
+    <path d="M 122 240 C 136 234 150 240 150 254 C 150 266 138 272 126 268 C 114 264 112 248 122 240 Z" fill="url(#bmb-patchGrad)" opacity="0.97"/>
+    <path d="M 92 234 C 100 230 110 232 112 242 C 113 252 104 258 96 256 C 88 253 86 240 92 234 Z" fill="url(#bmb-patchGrad)" opacity="0.95"/>
+    <ellipse cx="150" cy="300" rx="26" ry="55" fill="#B07840" opacity="0.18"/>
+    <ellipse cx="48" cy="300" rx="22" ry="50" fill="#B07840" opacity="0.14"/>
+    <ellipse cx="100" cy="244" rx="30" ry="10" fill="#C79A69" opacity="0.22"/>
+  </g>
+
+  <path d="M 90 74 C 88 112 85 150 79 194 C 76 214 74.5 226 74 244 C 88 258 112 258 128 244 C 126.5 226 124 212 119 194 C 112.5 150 110 112 110 74 Z" fill="url(#bmb-neckGrad)" stroke="#9C6740" stroke-opacity="0.3" stroke-width="1.4"/>
+  <g clip-path="url(#bmb-neckClip)">
+    <path d="M 84 90 C 92 84 104 84 108 92 C 111 100 106 108 98 110 C 88 112 80 104 84 90 Z" fill="url(#bmb-patchGrad)"/>
+    <path d="M 100 116 C 110 112 118 118 116 128 C 114 138 104 142 97 138 C 90 133 92 121 100 116 Z" fill="url(#bmb-patchGrad)" opacity="0.96"/>
+    <path d="M 78 128 C 86 122 94 126 95 136 C 96 146 89 152 81 150 C 73 147 72 135 78 128 Z" fill="url(#bmb-patchGrad)"/>
+    <path d="M 98 152 C 108 148 117 154 116 165 C 115 175 106 180 98 177 C 90 173 90 158 98 152 Z" fill="url(#bmb-patchGrad)" opacity="0.97"/>
+    <path d="M 74 166 C 82 160 90 164 91 174 C 92 184 85 190 77 188 C 69 185 68 173 74 166 Z" fill="url(#bmb-patchGrad)"/>
+    <path d="M 96 192 C 106 188 116 194 116 205 C 116 216 106 222 97 218 C 88 214 88 198 96 192 Z" fill="url(#bmb-patchGrad)" opacity="0.96"/>
+    <path d="M 70 202 C 78 196 87 200 88 211 C 89 222 81 228 72 226 C 63 222 62 209 70 202 Z" fill="url(#bmb-patchGrad)"/>
+    <path d="M 92 228 C 102 224 112 228 113 240 C 113 248 104 252 96 250 C 87 247 86 231 92 228 Z" fill="url(#bmb-patchGrad)" opacity="0.95"/>
+    <ellipse cx="121" cy="165" rx="13" ry="75" fill="#B07840" opacity="0.15"/>
+    <ellipse cx="80" cy="165" rx="10" ry="70" fill="#B07840" opacity="0.1"/>
+  </g>
+
+  <path d="M 86 338 C 87 366 90 388 86 404 C 84.5 411 84 415 84 421" stroke="#C9A470" stroke-width="9.5" stroke-linecap="round" fill="none"/>
+  <path d="M 86 338 C 87 366 90 388 86 404 C 84.5 411 84 415 84 421" stroke="#F2DFBB" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <path d="M 114 338 C 113 366 110 388 114 404 C 115.5 411 116 415 116 421" stroke="#C9A470" stroke-width="9.5" stroke-linecap="round" fill="none"/>
+  <path d="M 114 338 C 113 366 110 388 114 404 C 115.5 411 116 415 116 421" stroke="#F2DFBB" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <ellipse cx="87" cy="366" rx="3" ry="5" fill="url(#bmb-patchGrad)" transform="rotate(6 87 366)"/>
+  <ellipse cx="113" cy="372" rx="3" ry="4.6" fill="url(#bmb-patchGrad)" transform="rotate(-6 113 372)"/>
+  <use href="#bmb-boot" transform="translate(84,421)"/>
+  <use href="#bmb-boot" transform="translate(116,421) scale(-1,1)"/>
+
+  <g class="head">
+    <path d="M 95 21 C 90 12 85 3 79.5 -4" stroke="#4A331E" stroke-width="4.6" stroke-linecap="round" fill="none"/>
+    <path d="M 105 21 C 110 12 115 3 120.5 -4" stroke="#4A331E" stroke-width="4.6" stroke-linecap="round" fill="none"/>
+    <circle cx="78.5" cy="-5.2" r="4.7" fill="#3E2917"/>
+    <circle cx="77.1" cy="-6.6" r="1.4" fill="#6E4E31" opacity="0.9"/>
+    <circle cx="121.5" cy="-5.2" r="4.7" fill="#3E2917"/>
+    <circle cx="120.1" cy="-6.6" r="1.4" fill="#6E4E31" opacity="0.9"/>
+    <path d="M 81 33 C 73 26 61 24.5 56.5 29 C 53.5 32 57 38 64 40.5 C 71 43 78 41 81 37.5 Z" fill="#EFD9B2" stroke="#9C6740" stroke-opacity="0.3" stroke-width="1"/>
+    <path d="M 77 33.5 C 71 29 63 28 60 31 C 58.5 33 61 36.5 66 38 C 71 39.5 75.5 38 77 35.5 Z" fill="#BC5B36" opacity="0.88"/>
+    <path d="M 119 33 C 127 26 139 24.5 143.5 29 C 146.5 32 143 38 136 40.5 C 129 43 122 41 119 37.5 Z" fill="#EFD9B2" stroke="#9C6740" stroke-opacity="0.3" stroke-width="1"/>
+    <path d="M 123 33.5 C 129 29 137 28 140 31 C 141.5 33 139 36.5 134 38 C 129 39.5 124.5 38 123 35.5 Z" fill="#BC5B36" opacity="0.88"/>
+    <ellipse cx="100" cy="44" rx="21.5" ry="19.5" fill="url(#bmb-headGrad)" stroke="#9C6740" stroke-opacity="0.25" stroke-width="1.2"/>
+    <path d="M 78 54 C 78 42 88 37 100 37 C 112 37 122 42 122 54 C 122 68 113 80 100 80 C 87 80 78 68 78 54 Z" fill="url(#bmb-muzzleGrad)" stroke="#5E2312" stroke-opacity="0.35" stroke-width="1.2"/>
+    <ellipse cx="90" cy="47" rx="8" ry="4.5" fill="#D99062" opacity="0.35" transform="rotate(-18 90 47)"/>
+    <path d="M 90.5 47 C 88.5 49 88 52 89.5 54.5" stroke="#4F1F12" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+    <path d="M 109.5 47 C 111.5 49 112 52 110.5 54.5" stroke="#4F1F12" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+    <path d="M 95 71 Q 100 74.5 105 71" stroke="#6E2F1C" stroke-width="1.6" stroke-linecap="round" fill="none" opacity="0.6"/>
+    <g>
+      <circle cx="82" cy="19" r="16.5" fill="url(#bmb-eyeGrad)"/>
+      <path d="M 68.5 28.5 A 16.5 16.5 0 0 0 95.5 28.5" stroke="#C6B99F" stroke-width="1.6" stroke-linecap="round" fill="none" opacity="0.55"/>
+      <g class="pupil">
+        <circle cx="84" cy="22.5" r="4.8" fill="#3A2317"/>
+        <circle cx="86" cy="20.5" r="1.7" fill="#FFFFFF" opacity="0.95"/><circle cx="81" cy="24.5" r="0.9" fill="#FFFFFF" opacity="0.45"/>
+      </g>
+      <ellipse class="lid lidLeft" transform="translate(0 1.032) scale(1 0.14)" cx="82" cy="19" rx="17.8" ry="17.8" fill="#F0DCB8"/>
+    </g>
+    <g>
+      <circle cx="118" cy="19" r="16.5" fill="url(#bmb-eyeGrad)"/>
+      <path d="M 104.5 28.5 A 16.5 16.5 0 0 0 131.5 28.5" stroke="#C6B99F" stroke-width="1.6" stroke-linecap="round" fill="none" opacity="0.55"/>
+      <g class="pupil">
+        <circle cx="116" cy="22.5" r="4.8" fill="#3A2317"/>
+        <circle cx="118" cy="20.5" r="1.7" fill="#FFFFFF" opacity="0.95"/><circle cx="113" cy="24.5" r="0.9" fill="#FFFFFF" opacity="0.45"/>
+      </g>
+      <ellipse class="lid lidRight" transform="translate(0 1.032) scale(1 0.14)" cx="118" cy="19" rx="17.8" ry="17.8" fill="#F0DCB8"/>
+    </g>
+  </g>
+
+  </g>
+  <rect x="850" y="212" width="330" height="208" fill="url(#bn-card)"/>
+</g>
+<rect x="850" y="212" width="330" height="208" rx="26" fill="none" stroke="rgba(210,226,255,0.18)" stroke-width="1.6"/>
+<text x="1015" y="266" text-anchor="middle" font-size="34" font-weight="800" fill="#f5f7fb">Welcome</text>
+<rect x="886" y="292" width="258" height="30" rx="9" fill="rgba(10,22,40,0.55)" stroke="rgba(210,226,255,0.14)"/>
+<rect x="886" y="334" width="258" height="30" rx="9" fill="rgba(10,22,40,0.55)" stroke="rgba(210,226,255,0.14)"/>
+<rect x="886" y="378" width="258" height="30" rx="11" fill="#5284e0"/>
+<text x="1015" y="398" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">Sign in</text>
+
+<!-- title block -->
+<text x="84" y="150" font-size="58" font-weight="800" fill="#f5f7fb" letter-spacing="-1.5">Giraffe Login Experience</text>
+<text x="86" y="196" font-size="23" fill="#90a0b7">An interactive login screen with a very tall doorman —</text>
+<text x="86" y="228" font-size="23" fill="#90a0b7">it hides when you type your password, and walks to the door when you sign in.</text>
+
+<!-- walk-to-door vignette under the title -->
+<g transform="translate(86 268)">
+  <line x1="0" y1="118" x2="560" y2="118" stroke="rgba(255,255,255,0.12)" stroke-width="2"/>
+  <g transform="translate(30 44) scale(1.06)"><defs>
+            <radialGradient id="bw-bodyGrad" cx="0.42" cy="0.7" r="0.85">
+              <stop offset="0" stop-color="#F9EBCC" />
+              <stop offset="0.55" stop-color="#F1DDB6" />
+              <stop offset="1" stop-color="#DEC094" />
+            </radialGradient>
+            <radialGradient id="bw-headGrad" cx="0.45" cy="0.35" r="0.85">
+              <stop offset="0" stop-color="#F8E9C9" />
+              <stop offset="0.7" stop-color="#EFD9B2" />
+              <stop offset="1" stop-color="#DFC094" />
+            </radialGradient>
+            <radialGradient id="bw-eyeGrad" cx="0.42" cy="0.34" r="0.85">
+              <stop offset="0" stop-color="#FFFFFF" />
+              <stop offset="0.6" stop-color="#FBF8F1" />
+              <stop offset="1" stop-color="#DDD2BA" />
+            </radialGradient>
+            <radialGradient id="bw-muzzleGrad" cx="0.4" cy="0.3" r="0.9">
+              <stop offset="0" stop-color="#B15E3A" />
+              <stop offset="0.5" stop-color="#9C4A2C" />
+              <stop offset="1" stop-color="#7C351E" />
+            </radialGradient>
+            <linearGradient id="bw-patchGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#C75A33" />
+              <stop offset="1" stop-color="#A84325" />
+            </linearGradient>
+            <radialGradient id="bw-bootGrad" cx="0.38" cy="0.28" r="1">
+              <stop offset="0" stop-color="#503A31" />
+              <stop offset="0.5" stop-color="#362520" />
+              <stop offset="1" stop-color="#1D120E" />
+            </radialGradient>
+            <linearGradient id="bw-cuffGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#FBF0DC" />
+              <stop offset="1" stop-color="#E4CFA8" />
+            </linearGradient>
+            <clipPath id="bw-bodyClip">
+              <path d="M 12 36 C 15 33.5 20 32.8 25 33 C 27 33.1 29 33.3 30.5 33.8 C 33.5 26 35.5 17.5 37 9 C 39.5 7.8 43 8.6 45.5 11.5 C 44 21 42.8 30 42.2 36.5 C 41.8 41 40.2 44.8 36.5 47.5 C 33.5 52 30 53.6 26 53.6 C 18.5 53.6 12.8 49.5 11.6 44 C 11 40.5 11.2 37.8 12 36 Z" />
+            </clipPath>
+          </defs>
+
+          <g >
+            {/* Tail */}
+            <path
+              d="M 13 38 C 8 42 6.5 49 8.5 55"
+              fill="none"
+              stroke="#E7CDA2"
+              stroke-width="2.2"
+              stroke-linecap="round"
+            />
+            <ellipse
+              cx="8.5"
+              cy="57"
+              rx="2.6"
+              ry="3.6"
+              fill="#46301C"
+              transform="rotate(10 8.5 57)"
+            />
+
+            {/* Legs. Positioning lives on an attribute-only outer group so
+                the keyframed rotate on the inner group can never wipe the
+                translate out of the transform cascade. */}
+            <g transform="translate(15.5 49.5)">
+              <g >
+                <rect x="-1.7" y="0" width="3.4" height="7" rx="1.7" fill="#C9A87B" />
+                <rect x="-4" y="5.6" width="8" height="6.4" rx="2.2" fill="url(#bw-bootGrad)" />
+                <rect x="-4" y="11.2" width="8" height="1.6" rx="0.8" fill="#140C08" />
+                <path d="M -2.2 7.6 L 2.2 8.8 M 2.2 7.6 L -2.2 8.8" stroke="#E9D8B6" stroke-width="0.8" stroke-linecap="round" fill="none" opacity="0.9" />
+                <rect x="-4" y="5" width="8" height="2.4" rx="1.2" fill="url(#bw-cuffGrad)" />
+              </g>
+            </g>
+            <g transform="translate(21 50)">
+              <g >
+                <rect x="-1.7" y="0" width="3.4" height="7" rx="1.7" fill="#C9A87B" />
+                <rect x="-4" y="5.6" width="8" height="6.4" rx="2.2" fill="url(#bw-bootGrad)" />
+                <rect x="-4" y="11.2" width="8" height="1.6" rx="0.8" fill="#140C08" />
+                <path d="M -2.2 7.6 L 2.2 8.8 M 2.2 7.6 L -2.2 8.8" stroke="#E9D8B6" stroke-width="0.8" stroke-linecap="round" fill="none" opacity="0.9" />
+                <rect x="-4" y="5" width="8" height="2.4" rx="1.2" fill="url(#bw-cuffGrad)" />
+              </g>
+            </g>
+
+            {/* Body and neck as ONE continuous silhouette — withers flow
+                into the back of the neck, the chest curve into its front,
+                so there is no seam where they meet. */}
+            <path
+              d="M 12 36 C 15 33.5 20 32.8 25 33 C 27 33.1 29 33.3 30.5 33.8 C 33.5 26 35.5 17.5 37 9 C 39.5 7.8 43 8.6 45.5 11.5 C 44 21 42.8 30 42.2 36.5 C 41.8 41 40.2 44.8 36.5 47.5 C 33.5 52 30 53.6 26 53.6 C 18.5 53.6 12.8 49.5 11.6 44 C 11 40.5 11.2 37.8 12 36 Z"
+              fill="url(#bw-bodyGrad)"
+              stroke="#9C6740"
+              stroke-opacity="0.3"
+              stroke-width="0.8"
+            />
+            <ellipse cx="24" cy="47" rx="9" ry="5" fill="#FAEDCB" opacity="0.55" />
+            <g clip-path="url(#bw-bodyClip)" fill="url(#bw-patchGrad)" opacity="0.95">
+              <path d="M 14 36 C 18 33 23 34 24 38 C 25 42 21 45 17 44 C 13 43 12 39 14 36 Z" />
+              <path d="M 30 39 C 34 36 39 38 39.5 42 C 40 46 36 49 32 47.5 C 28 46 27.5 42 30 39 Z" />
+              <path d="M 18 48 C 21 46 25 47 25.5 50 C 26 53 23 55 20 54 C 17 53 16.5 50 18 48 Z" />
+              <path d="M 33 50 C 35 48.5 37.5 49.5 37.8 51.5 C 38 53.5 36 55 34 54.2 C 32 53.4 31.8 51.3 33 50 Z" />
+              <path d="M 31 31 C 34 29.5 36.8 31 36.8 33.5 C 36.8 36 34 37.5 31.8 36.3 C 29.6 35 29.6 32.4 31 31 Z" />
+              <path d="M 35 24 C 37.5 22.5 40 24 40 26.5 C 40 29 37.5 30.5 35.5 29.3 C 33.5 28 33.5 25.5 35 24 Z" />
+              <path d="M 38 14 C 39.8 13 41.8 14 41.8 15.8 C 41.8 17.6 39.8 18.7 38.3 17.7 C 36.8 16.7 36.9 15 38 14 Z" />
+            </g>
+
+            {/* Front legs (over the belly) */}
+            <g transform="translate(31 50)">
+              <g >
+                <rect x="-1.7" y="0" width="3.4" height="7" rx="1.7" fill="#DEC49A" />
+                <rect x="-4" y="5.6" width="8" height="6.4" rx="2.2" fill="url(#bw-bootGrad)" />
+                <rect x="-4" y="11.2" width="8" height="1.6" rx="0.8" fill="#140C08" />
+                <path d="M -2.2 7.6 L 2.2 8.8 M 2.2 7.6 L -2.2 8.8" stroke="#E9D8B6" stroke-width="0.8" stroke-linecap="round" fill="none" opacity="0.9" />
+                <rect x="-4" y="5" width="8" height="2.4" rx="1.2" fill="url(#bw-cuffGrad)" />
+              </g>
+            </g>
+            <g transform="translate(36.5 49.5)">
+              <g >
+                <rect x="-1.7" y="0" width="3.4" height="7" rx="1.7" fill="#DEC49A" />
+                <rect x="-4" y="5.6" width="8" height="6.4" rx="2.2" fill="url(#bw-bootGrad)" />
+                <rect x="-4" y="11.2" width="8" height="1.6" rx="0.8" fill="#140C08" />
+                <path d="M -2.2 7.6 L 2.2 8.8 M 2.2 7.6 L -2.2 8.8" stroke="#E9D8B6" stroke-width="0.8" stroke-linecap="round" fill="none" opacity="0.9" />
+                <rect x="-4" y="5" width="8" height="2.4" rx="1.2" fill="url(#bw-cuffGrad)" />
+              </g>
+            </g>
+
+            {/* Head — big googly eye, ossicones, dark muzzle, like the mascot */}
+            <g >
+              <ellipse
+                cx="36.5"
+                cy="2.8"
+                rx="3.4"
+                ry="2.1"
+                fill="#EFD9B2"
+                transform="rotate(-38 36.5 2.8)"
+              />
+              <ellipse
+                cx="36.8"
+                cy="2.9"
+                rx="1.8"
+                ry="1"
+                fill="#BC5B36"
+                transform="rotate(-38 36.8 2.9)"
+              />
+
+              <path
+                d="M 40.5 3.5 L 38.8 -2.6"
+                stroke="#4A331E"
+                stroke-width="1.9"
+                stroke-linecap="round"
+              />
+              <path
+                d="M 44.6 3.2 L 46 -3"
+                stroke="#4A331E"
+                stroke-width="1.9"
+                stroke-linecap="round"
+              />
+              <circle cx="38.6" cy="-3.4" r="2" fill="#3E2917" />
+              <circle cx="46.2" cy="-3.8" r="2" fill="#3E2917" />
+
+              <circle cx="43.5" cy="9.5" r="6.8" fill="url(#bw-headGrad)" />
+
+              <ellipse
+                cx="52.5"
+                cy="12.3"
+                rx="6.6"
+                ry="5"
+                fill="url(#bw-muzzleGrad)"
+                transform="rotate(10 52.5 12.3)"
+              />
+              <ellipse
+                cx="55.4"
+                cy="10.4"
+                rx="1"
+                ry="1.4"
+                fill="#5E2312"
+                transform="rotate(15 55.4 10.4)"
+              />
+              <path
+                d="M 50.5 15.8 Q 53.5 17.2 56 15.6"
+                fill="none"
+                stroke="#6E2F1C"
+                stroke-width="1"
+                stroke-linecap="round"
+                opacity="0.6"
+              />
+
+              <circle cx="44.8" cy="5.2" r="5.2" fill="url(#bw-eyeGrad)" />
+              <circle cx="46.6" cy="6" r="2.3" fill="#3A2317" />
+              <circle cx="47.4" cy="5" r="0.85" fill="#FFFFFF" opacity="0.95" />
+              <circle cx="45.4" cy="7" r="0.5" fill="#FFFFFF" opacity="0.45" />
+            </g>
+          </g>
+        </g>
+  <g transform="translate(470 22)">
+  <g>
+    <defs>
+      <linearGradient id="bnd-door" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#173a62"/>
+        <stop offset="0.56" stop-color="#0f2847"/>
+        <stop offset="1" stop-color="#0a1d34"/>
+      </linearGradient>
+    </defs>
+    <path d="M 0 96 L 0 4 Q 0 0 4 0 L 56 0 Q 60 0 60 4 L 60 96" fill="rgba(255,255,255,0.06)" stroke="rgba(246,250,255,0.95)" stroke-width="4"/>
+    <rect x="6" y="6" width="48" height="90" fill="url(#bnd-door)"/>
+    <circle cx="14" cy="51" r="3.5" fill="rgba(255,235,193,0.9)"/>
+  </g>
+</g>
+  <g stroke="rgba(255,255,255,0.35)" stroke-width="2.4" stroke-linecap="round">
+    <path d="M 190 84 h 26 M 232 84 h 16"/>
+    <path d="M 300 84 h 26 M 342 84 h 16" opacity="0.6"/>
+    <path d="M 404 84 h 26" opacity="0.35"/>
+  </g>
+</g>
+</svg>

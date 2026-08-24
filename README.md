@@ -24,6 +24,10 @@ Designed as a reusable developer-friendly implementation for modern applications
 
 <div align="center">
 
+<img src="shared-assets/giraffe/main-banner.svg" alt="Giraffe Login Experience" />
+
+<br><br>
+
 <img src="https://skillicons.dev/icons?i=react,ts,vite,flutter,dart" alt="Technology Stack" />
 
 <br><br>
@@ -125,6 +129,12 @@ A cartoon giraffe with a soft, Pixar-ish 3D feel, drawn as vector art:
 - Huge white googly eyes with small dark-brown pupils (`#3A2317`)
 - Dark-brown ossicones (`#3E2917`)
 - Chunky dark lace-up boots with cream fur cuffs
+
+<div align="center">
+
+<img src="shared-assets/giraffe/character-reference.svg" alt="Giraffe Character Reference" width="700"/>
+
+</div>
 
 ---
 
